@@ -1,21 +1,19 @@
-import { Route, Routes } from 'react-router-dom';
-import { Header } from './components/header';
-import { Menu } from './components/menu';
-import styled from 'styled-components';
-import { Home } from './nested/home/homepage';
-
+import styled from "styled-components";
+import { Outlet } from "react-router-dom";
+import { Header } from "./components/header";
+import { Menu } from "./components/menu";
 
 export const Dashboard = () => {
     return (
         <DashboardStyles>
-            <Header/>
-            <Menu/>
-            <Routes>
-                <Route path="home" element={<Home />}/>
-            </Routes>
+            <Header />
+            <Menu />
+            <main className="main-content">
+                <Outlet /> {/* Renderiza as rotas internas */}
+            </main>
         </DashboardStyles>
-    )
-}
+    );
+};
 
 const DashboardStyles = styled.div`
     display: grid;
@@ -23,5 +21,11 @@ const DashboardStyles = styled.div`
     grid-template-rows: 100px 1fr;
     height: 100vh;
     width: 100vw;
-    background-color: #f9f9f9;
-`
+
+    .main-content {
+        grid-column: 2;
+        grid-row: 2;
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+`;

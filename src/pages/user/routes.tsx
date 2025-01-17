@@ -1,25 +1,36 @@
-import { redirect, RouteObject } from 'react-router-dom';
-import { Dashboard } from './dashboard/dashboard';
-import { Home } from './dashboard/nested/home/homepage'; 
+import { RouteObject } from "react-router-dom";
+import { Dashboard } from "./dashboard/dashboard";
+import { Home } from "./dashboard/nested/home/homepage";
+import { CreateEventPage } from "./dashboard/nested/create/createeventpage";
+import { CalendarPage } from "./dashboard/nested/calendar/calendarpage";
+import { EditEventPage } from "./dashboard/nested/update/updateevent";
 
-const routes : RouteObject[] = [
+export const userRoutes: RouteObject[] = [
     {
-        path: "user/dashboard",
+        path: "/user/dashboard",
         element: <Dashboard />,
-        id: "dashboard",
         children: [
             {
                 index: true,
-                loader: async () => redirect('/user/dashboard/home')
+                element: <Home />, // Página de listagem de eventos como padrão
+                id: "events",
             },
             {
-                path: "home",
-                element: <Home />,
-                id: "home"
-                
+                path: "create-event",
+                element: <CreateEventPage />, // Página para criar eventos
+                id: "create-event",
+            },
+            {
+                path: "calendar",
+                element: <CalendarPage />, // Página do calendário
+                id: "calendar",
+            },
+            {
+                path: "edit-event/:id", // Aceitando o parâmetro ID
+                element: <EditEventPage />,
+                id: "edit-event",
             }
-        ]
-    }
-]
-
-export default routes;
+            
+        ],
+    },
+];

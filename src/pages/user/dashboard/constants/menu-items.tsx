@@ -1,14 +1,20 @@
-import { House } from '@phosphor-icons/react';
+import { House, Calendar, PencilSimple, Plus } from '@phosphor-icons/react';
+import { PlusIcon } from 'lucide-react';
 
 export const menuItems = [
     {
-        label: 'Home',
-        icon: <House />,
-        href: '/user/dashboard/home',
+        label: 'Visão Geral',
+        icon: <House size={24} weight="bold" />,
+        href: '/user/dashboard',
     },
     {
-        label: 'Profile',
-        icon: <House />,
-        href: '/user/dashboard/profile',
-    }
+        label: 'Calendário',
+        icon: <Calendar size={24} weight="bold" />,
+        href: '/user/dashboard/calendar',
+    },
+    {
+        label: 'Criar Evento',
+        icon: <Plus size={24} weight="bold" />,
+        href: '/user/dashboard/create-event',
+    },
 ];
