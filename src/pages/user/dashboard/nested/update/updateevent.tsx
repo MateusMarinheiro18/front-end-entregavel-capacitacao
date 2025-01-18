@@ -21,7 +21,7 @@ export const EditEventPage = () => {
             return;
         }
 
-        fetch(`http://localhost:8000/api/events/${id}`) // Substitua pela URL correta da API
+        fetch(`http://localhost:8000/events/${id}`) // Substitua pela URL correta da API
             .then((res) => res.json())
             .then((data) => {
                 setEventData(data);

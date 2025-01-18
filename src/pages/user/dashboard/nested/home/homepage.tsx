@@ -1,8 +1,9 @@
-import styled from "styled-components";
 import { useState, useEffect } from "react";
+import styled from "styled-components";
 import { listEvents } from "./api/fetchListEvents";
 import { deleteEvent } from "./api/fetchDeleteEvent";
 import { useNavigate } from "react-router-dom";
+import { EventCard } from "./components/EventCard";
 
 export const Home = () => {
     const [events, setEvents] = useState([]);
@@ -23,9 +24,9 @@ export const Home = () => {
 
     const handleDelete = async (id: string) => {
         try {
-            await deleteEvent(id); // Chama o endpoint de exclusão
+            await deleteEvent(id);
             setResponseMessage("Evento excluído com sucesso!");
-            fetchEvents(); // Atualiza a lista de eventos
+            fetchEvents();
         } catch (error: any) {
             console.error("Erro ao deletar evento:", error.message);
             setResponseMessage("Erro ao deletar evento.");
@@ -39,73 +40,41 @@ export const Home = () => {
         }
         navigate(`/user/dashboard/edit-event/${eventId}`);
     };
-    
 
     useEffect(() => {
         fetchEvents();
     }, []);
 
     return (
-        <EventListStyles>
+        <HomeStyles>
             <h1>Lista de Eventos</h1>
-            <ul>
+            <div className="event-list">
                 {events.map((event: any, index) => (
-                    <li key={index}>
-                        <div>
-                            <strong>{event.name}</strong> - {event.description} ({event.location}) - {event.day}/{event.month} - {event.initial_time} - {event.final_time}
-                        </div>
-                        <div className="actions">
-                            <button onClick={() => handleEdit(event._id.toString())}>Editar</button>
-                            <button onClick={() => handleDelete(event._id.toString())}>Excluir</button>
-                        </div>
-                    </li>
+                    <EventCard
+                        key={index}
+                        event={event}
+                        onEdit={handleEdit}
+                        onDelete={handleDelete}
+                    />
                 ))}
-            </ul>
-            <p>{responseMessage}</p>
-        </EventListStyles>
+            </div>
+        </HomeStyles>
     );
-    
 };
 
-const EventListStyles = styled.div`
+const HomeStyles = styled.div`
     background-color: #f9f9f9;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100vh;
 
-    ul {
-        list-style: none;
-        padding: 0;
+    h1 {
+        margin-bottom: 20px;
+        color: #4a004a;
+    }
 
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background-color: #f1f1f1;
-            margin-bottom: 10px;
-            border-radius: 5px;
-
-            .actions {
-                display: flex;
-                gap: 10px;
-
-                button {
-                    padding: 5px 10px;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-
-                    &:first-child {
-                        background-color: #007bff;
-                        color: white;
-                    }
-
-                    &:last-child {
-                        background-color: #ff4d4d;
-                        color: white;
-                    }
-                }
-            }
-        }
+    .event-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Três cartões por linha */
+        gap: 20px; /* Espaçamento entre os cartões */
     }
 `;

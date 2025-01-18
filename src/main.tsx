@@ -1,12 +1,15 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
+import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
 import { router } from "./router";
+import { AuthProvider } from "./context/authcontext"; // Ajuste o caminho se necessário
+import { Toaster } from "react-hot-toast";
 
-createRoot(document.getElementById("root")!).render(
-    <>
-        <RouterProvider router={router} />
-        <Toaster position="bottom-right" />
-    </>
+ReactDOM.createRoot(document.getElementById("root")!).render(
+    <React.StrictMode>
+        <AuthProvider>
+            <RouterProvider router={router} />
+            <Toaster position="bottom-right" />
+        </AuthProvider>
+    </React.StrictMode>
 );
