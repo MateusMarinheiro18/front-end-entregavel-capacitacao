@@ -11,7 +11,7 @@ interface CreateEventData {
 }
 
 export async function createEvent(data: CreateEventData) {
-    const response = await fetch(`${config.apiBaseUrl}/event`, {
+    const response = await fetch(`${config.apiBaseUrl}/event-create`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

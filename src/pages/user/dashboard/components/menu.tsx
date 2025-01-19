@@ -24,9 +24,8 @@ const MenuStyles = styled.div`
     font-family: "Poppins", sans-serif;
     grid-column: 1;
     grid-row: 1 / span 2;
-    background-color: #f9f9f9;
+    background-color: #EECAEE;
     padding: 20px;
-    border-right: 1px solid #ddd;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,8 +33,7 @@ const MenuStyles = styled.div`
     .logo-container {
         margin-bottom: 20px;
         img {
-            max-width: 100px; /* Define um tamanho máximo para a logo */
-            height: auto;
+            height: 8rem;
         }
     }
 
@@ -59,7 +57,7 @@ const MenuStyles = styled.div`
         transition: background-color 0.3s;
 
         &:hover {
-            background-color: rgba(238, 202, 238, 0.2); /* Cor de destaque ao passar o mouse */
+            background-color: #A68DA6; /* Cor de destaque ao passar o mouse */
         }
 
         span {

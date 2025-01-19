@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { listEvents } from "./api/fetchListEvents";
 import { deleteEvent } from "./api/fetchDeleteEvent";
 import { useNavigate } from "react-router-dom";
-import { EventCard } from "./components/EventCard";
+import { EventCard } from "../../components/EventCard";
 
 export const Home = () => {
     const [events, setEvents] = useState([]);
@@ -63,9 +63,11 @@ export const Home = () => {
 };
 
 const HomeStyles = styled.div`
-    background-color: #f9f9f9;
+    background-color: #F6E4F6;
     padding: 20px;
     height: 100vh;
+    font-family: "Poppins", sans-serif;
+
 
     h1 {
         margin-bottom: 20px;

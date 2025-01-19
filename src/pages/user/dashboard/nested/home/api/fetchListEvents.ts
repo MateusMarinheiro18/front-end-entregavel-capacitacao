@@ -2,7 +2,7 @@ import { config } from '../../../../../../config/config';
 
 export async function listEvents(): Promise<{ response: Response }> {
     let { apiBaseUrl } = config;
-    let requestRoute = "/event"; // Rota para listar eventos
+    let requestRoute = "/event-list"; // Rota para listar eventos
 
     let options = {
         method: 'GET',

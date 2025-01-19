@@ -1,7 +1,7 @@
 import { config } from "@/config/config";
 
 export async function deleteEvent(id: string) {
-    const response = await fetch(`${config.apiBaseUrl}/events/${id}`, {
+    const response = await fetch(`${config.apiBaseUrl}/event-delete/${id}`, {
         method: "DELETE",
     });
 

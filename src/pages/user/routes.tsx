@@ -16,35 +16,36 @@ export const userRoutes: RouteObject[] = [
                 <Dashboard />
             </ProtectedRoute>
         ),
+        handle: { breadcrumb: "Dashboard" }, // Breadcrumb para Dashboard
         children: [
             {
                 index: true,
-                element: <Home />, // Página de listagem de eventos como padrão
-                id: "events",
+                element: <Home />,
+                handle: { breadcrumb: "Home" }, // Breadcrumb para Home
             },
             {
                 path: "create-event",
-                element: <CreateEventPage />, // Página para criar eventos
-                id: "create-event",
+                element: <CreateEventPage />,
+                handle: { breadcrumb: "Criar Evento" }, // Breadcrumb para Criar Evento
             },
             {
                 path: "calendar",
-                element: <CalendarPage />, // Página do calendário
-                id: "calendar",
+                element: <CalendarPage />,
+                handle: { breadcrumb: "Calendário" }, // Breadcrumb para Calendário
             },
             {
-                path: "edit-event/:id", // Aceitando o parâmetro ID
+                path: "edit-event/:id",
                 element: <EditEventPage />,
-                id: "edit-event",
+                handle: { breadcrumb: "Editar Evento" }, // Breadcrumb para Editar Evento
             },
         ],
     },
     {
         path: "/auth/login",
-        element: <LoginPage />, // Página de login
+        element: <LoginPage />,
     },
     {
         path: "/auth/register",
-        element: <RegisterPage />, // Página de registro
-    }
+        element: <RegisterPage />,
+    },
 ];

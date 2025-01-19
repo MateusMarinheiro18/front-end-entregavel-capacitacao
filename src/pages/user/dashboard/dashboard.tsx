@@ -25,7 +25,6 @@ const DashboardStyles = styled.div`
         height: 100%;
         grid-column: 2;
         grid-row: 2;
-        padding: 20px;
         background-color: #f9f9f9;
     }
 `;

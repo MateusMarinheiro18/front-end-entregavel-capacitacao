@@ -11,11 +11,8 @@ interface UpdateEventData {
 }
 
 export async function updateEvent(id: string, data: UpdateEventData) {
-    const response = await fetch(`${config.apiBaseUrl}/events/${id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
+    const response = await fetch(`${config.apiBaseUrl}/event-edit/${id}`, {
+        method: "POST",
         body: JSON.stringify(data), // Dados atualizados do evento
     });
 

@@ -2,7 +2,7 @@ import { config } from '../../../../../../config/config';
 
 export async function createEvent(eventData: any): Promise<{ response: Response }> {
     let { apiBaseUrl } = config;
-    let requestRoute = "/event"; // Rota para criar evento
+    let requestRoute = "/event-create"; // Rota para criar evento
 
     let options = {
         method: 'POST',
