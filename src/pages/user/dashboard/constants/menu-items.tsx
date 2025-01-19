@@ -3,7 +3,7 @@ import { PlusIcon } from 'lucide-react';
 
 export const menuItems = [
     {
-        label: 'Visão Geral',
+        label: 'Meus Eventos',
         icon: <House size={24} weight="bold" />,
         href: '/user/dashboard',
     },

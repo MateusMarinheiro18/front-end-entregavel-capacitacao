@@ -20,6 +20,7 @@ export const Home = () => {
         } catch (error: any) {
             console.error("Erro ao buscar eventos:", error.message);
         }
+        console.log(localStorage.getItem("authToken"));
     };
 
     const handleDelete = async (id: string) => {

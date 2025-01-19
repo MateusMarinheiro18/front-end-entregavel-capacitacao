@@ -35,7 +35,7 @@ export function Header() {
                     })}
             </div>
             <div className="user-container">
-                <p>Bem-vindo(a), Usuário!</p>
+                <p>Bem-vindo(a)!</p>
             </div>
         </HeaderStyle>
     );

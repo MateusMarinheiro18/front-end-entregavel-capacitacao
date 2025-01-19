@@ -5,20 +5,20 @@ export const EventCard = ({ event, onEdit, onDelete }: any) => {
     return (
         <EventCardStyles>
             <div className="event-header">
-                <h2>{event.name}</h2>
+                <h2 className="event-title">{event.name}</h2>
             </div>
             <div className="event-info">
                 <p>{event.description}</p>
                 <div className="icon-row">
-                    <MapPin size={20} weight="bold" color="#C13BBE" />
+                    <MapPin size={20} weight="bold" color="#4A004A" />
                     <span>{event.location}</span>
                 </div>
                 <div className="icon-row">
-                    <Calendar size={20} weight="bold" color="#C13BBE" />
+                    <Calendar size={20} weight="bold" color="#4A004A" />
                     <span>{event.day}/{event.month}</span>
                 </div>
                 <div className="icon-row">
-                    <Clock size={20} weight="bold" color="#C13BBE" />
+                    <Clock size={20} weight="bold" color="#4A004A" />
                     <span>{event.initial_time} - {event.final_time}</span>
                 </div>
             </div>
@@ -43,9 +43,8 @@ export const EventCard = ({ event, onEdit, onDelete }: any) => {
 const EventCardStyles = styled.div`
     font-family: "Poppins", sans-serif;
     background-color: #ffffff;
-    border: 1px solid #B407D9;
     border-radius: 10px;
-    box-shadow: 0 1px 6px #FF16D4;
+    border: 3px solid #4A004A;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -54,10 +53,10 @@ const EventCardStyles = styled.div`
     width: 60%;
 
     .event-header {
-        background-color: #C13BBE;
+        background-color: #4A004A;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
-        h2 {
+        .event-title {
             font-size: 20px;
             margin-bottom: 0px;
             margin-top: 0px;
@@ -83,6 +82,8 @@ const EventCardStyles = styled.div`
         gap: 10px;
         margin-left: 5px;
         margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: 600;
 
 
         .icon-row {
@@ -108,7 +109,7 @@ const EventCardStyles = styled.div`
         .edit-icon,
         .delete-icon {
             cursor: pointer;
-            color: #B306D7;
+            color: #4A004A;
             transition: color 0.3s;
 
             &:hover {
@@ -117,7 +118,7 @@ const EventCardStyles = styled.div`
         }
 
         .delete-icon {
-            color: #B306D7;
+            color: #4A004A;
 
             &:hover {
                 color: #4A004A;

@@ -12,9 +12,7 @@ export const userRoutes: RouteObject[] = [
     {
         path: "/user/dashboard",
         element: (
-            <ProtectedRoute>
-                <Dashboard />
-            </ProtectedRoute>
+            <Dashboard />
         ),
         handle: { breadcrumb: "Dashboard" }, // Breadcrumb para Dashboard
         children: [
