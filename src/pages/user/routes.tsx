@@ -4,7 +4,6 @@ import { Home } from "./dashboard/nested/home/homepage";
 import { CreateEventPage } from "./dashboard/nested/create/createeventpage";
 import { CalendarPage } from "./dashboard/nested/calendar/calendarpage";
 import { EditEventPage } from "./dashboard/nested/update/updateevent";
-import { ProtectedRoute } from "./protectedroute";
 import { LoginPage } from "../user/login/loginpage";
 import { RegisterPage } from "./register/registerpage";
 
@@ -40,6 +39,10 @@ export const userRoutes: RouteObject[] = [
     },
     {
         path: "/auth/login",
+        element: <LoginPage />,
+    },
+    {
+        path: "/auth/logout",
         element: <LoginPage />,
     },
     {

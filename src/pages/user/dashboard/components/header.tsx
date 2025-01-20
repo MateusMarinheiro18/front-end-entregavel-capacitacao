@@ -68,7 +68,7 @@ const HeaderStyle = styled.div`
 
       a {
         text-decoration: none;
-        color: #4A004A;
+        color: #926692;
         font-weight: bold;
 
         &:hover {
@@ -78,7 +78,7 @@ const HeaderStyle = styled.div`
 
       .separator {
         margin: 0 5px;
-        color: #4A004A;
+        color: #926692;
         font-weight: bold;
       }
     }

@@ -111,7 +111,7 @@ export const CalendarPage = () => {
                                 ))}
                             </ul>
                         ) : (
-                            <p>Nenhum evento encontrado para esta data.</p>
+                          null 
                         )}
                     </div>
                 )}
@@ -123,7 +123,6 @@ export const CalendarPage = () => {
 const CalendarPageStyles = styled.div`
     font-family: "Poppins", sans-serif;
     background-color: #F6E4F6;
-    padding: 20px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -133,6 +132,7 @@ const CalendarPageStyles = styled.div`
     height: 100vh;
 
     h1 {
+        margin-top: 20px;
         margin-bottom: 20px;
         color: #4a004a; /* Tom mais escuro da cor principal */
     }
@@ -141,8 +141,13 @@ const CalendarPageStyles = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-around;
         width: 100%;
+
+        /* Ajusta para flex-direction: column quando a largura for menor que 1200px */
+        @media (max-width: 1200px) {
+            flex-direction: column;
+        }
     }
 
     .calendar {

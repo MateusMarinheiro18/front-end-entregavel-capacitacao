@@ -1,4 +1,4 @@
-import { House, Calendar, PencilSimple, Plus } from '@phosphor-icons/react';
+import { House, Calendar, PencilSimple, Plus, DoorOpen } from '@phosphor-icons/react';
 import { PlusIcon } from 'lucide-react';
 
 export const menuItems = [
@@ -17,4 +17,10 @@ export const menuItems = [
         icon: <Plus size={24} weight="bold" />,
         href: '/user/dashboard/create-event',
     },
+    {
+        label: 'Sair',
+        icon: <DoorOpen size={24} weight="bold" />,
+        href: '/auth/logout',
+
+    }
 ];

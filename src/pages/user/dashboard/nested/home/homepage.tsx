@@ -7,6 +7,8 @@ import { EventCard } from "../../components/EventCard";
 
 export const Home = () => {
     const [events, setEvents] = useState([]);
+    const [filteredEvents, setFilteredEvents] = useState([]); // Eventos filtrados
+    const [searchQuery, setSearchQuery] = useState(""); // Estado da barra de pesquisa
     const [responseMessage, setResponseMessage] = useState("");
     const navigate = useNavigate();
 
@@ -16,6 +18,7 @@ export const Home = () => {
             if (response.ok) {
                 const data = await response.json();
                 setEvents(data);
+                setFilteredEvents(data); // Inicialmente, todos os eventos são exibidos
             }
         } catch (error: any) {
             console.error("Erro ao buscar eventos:", error.message);
@@ -42,15 +45,37 @@ export const Home = () => {
         navigate(`/user/dashboard/edit-event/${eventId}`);
     };
 
+    // Função para lidar com a pesquisa
+    const handleSearch = (query: string) => {
+        setSearchQuery(query);
+        if (query.trim() === "") {
+            setFilteredEvents(events); // Mostra todos os eventos se a barra de pesquisa estiver vazia
+        } else {
+            const lowercasedQuery = query.toLowerCase();
+            const filtered = events.filter((event: any) =>
+                event.name.toLowerCase().includes(lowercasedQuery) // Filtra pelo título do evento
+            );
+            setFilteredEvents(filtered);
+        }
+    };
+
     useEffect(() => {
         fetchEvents();
     }, []);
 
     return (
         <HomeStyles>
-            <h1>Lista de Eventos</h1>
+            <h1>Visão geral dos seus eventos</h1>
+            <div className="search-container">
+                <input
+                    type="text"
+                    placeholder="Pesquisar pelo título do evento..."
+                    value={searchQuery}
+                    onChange={(e) => handleSearch(e.target.value)}
+                />
+            </div>
             <div className="event-list">
-                {events.map((event: any, index) => (
+                {filteredEvents.map((event: any, index) => (
                     <EventCard
                         key={index}
                         event={event}
@@ -68,16 +93,52 @@ const HomeStyles = styled.div`
     padding: 20px;
     height: 100vh;
     font-family: "Poppins", sans-serif;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 
     h1 {
         margin-bottom: 20px;
         color: #4a004a;
     }
 
+    .search-container {
+        margin-bottom: 20px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        input {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+            border: 1px solid #d8a3d8;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #4a004a;
+            background-color: #f6e6f6;
+            outline: none;
+
+            &:focus {
+                border: 1px solid #c88fc8;
+                background-color: white;
+            }
+        }
+    }
+
     .event-list {
         display: grid;
         grid-template-columns: repeat(3, 1fr); /* Três cartões por linha */
         gap: 20px; /* Espaçamento entre os cartões */
+
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(2, 1fr); /* Dois cartões por linha em telas menores */
+        }
+
+        @media (max-width: 480px) {
+            grid-template-columns: 1fr; /* Um cartão por linha em telas muito pequenas */
+        }
     }
 `;

@@ -50,7 +50,7 @@ const EventCardStyles = styled.div`
     justify-content: flex-start;
     gap: 10px;
     position: relative;
-    width: 60%;
+    width: 15rem;
 
     .event-header {
         background-color: #4A004A;

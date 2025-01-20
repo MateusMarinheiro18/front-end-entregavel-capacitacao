@@ -18,7 +18,7 @@ export const Dashboard = () => {
 const DashboardStyles = styled.div`
     display: grid;
     grid-template-columns: 200px 1fr;
-    grid-template-rows: 100px 1fr;
+    grid-template-rows: 60px 1fr;
     height: 100%;
 
     .main-content {
